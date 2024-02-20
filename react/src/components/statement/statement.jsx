@@ -9,9 +9,11 @@ function Statement() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/bank-api/statements/getStatement/${currentUserID}`);
+      const response = await axios.get(
+        `http://localhost:8080/bank-api/statements/getStatement/${currentUserID}`
+      );
 
-      setStatements(response.data);
+      setStatements(response.data || []);
     } catch (error) {
       console.error(error);
     }
@@ -28,7 +30,7 @@ function Statement() {
       <div className="header1">
         <h2>Statement</h2>
       </div>
-      <div className="table-container" style={{marginTop: "50px"}}>
+      <div className="table-container" style={{ marginTop: "50px" }}>
         <table className="table-data">
           <thead>
             <tr>
